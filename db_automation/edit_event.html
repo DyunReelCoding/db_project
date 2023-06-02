@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Event - Event Management</title>
+</head>
+<body>
+    <h2>Edit Event</h2>
+
+    <form method="POST" action="event_process.php">
+        <input type="hidden" name="event_id" value="event_id_to_edit">
+        <input type="text" name="building_name" placeholder="Building Name" required><br>
+        <input type="text" name="room_number" placeholder="Room Number" required><br>
+        <input type="text" name="subject" placeholder="Subject" required><br>
+        <input type="date" name="date" required><br>
+        <input type="time" name="time" required><br>
+        <input type="submit" name="update" value="Update Event">
+    </form>
+
+    <button onclick="location.href='instructor.html'">Go Back</button>
+</body>
+</html>
