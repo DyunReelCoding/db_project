@@ -21,8 +21,10 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Retrieve events from Event table
-    $sql = "SELECT * FROM event_tbl";
+    // Retrieve events from Event table with subject details
+    $sql = "SELECT e.building_name, e.room_number, s.subject_code, e.event_date, e.event_time 
+            FROM event_tbl e
+            INNER JOIN subject_tbl s ON e.subject_id = s.subject_id";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -30,7 +32,7 @@
         echo "<tr>";
         echo "<th>Building Name</th>";
         echo "<th>Room Number</th>";
-        echo "<th>Subject</th>";
+        echo "<th>Subject Code</th>";
         echo "<th>Date</th>";
         echo "<th>Time</th>";
         echo "</tr>";
@@ -39,7 +41,7 @@
             echo "<tr>";
             echo "<td>" . $row['building_name'] . "</td>";
             echo "<td>" . $row['room_number'] . "</td>";
-            echo "<td>" . $row['subject_id'] . "</td>";
+            echo "<td>" . $row['subject_code'] . "</td>";
             echo "<td>" . $row['event_date'] . "</td>";
             echo "<td>" . $row['event_time'] . "</td>";
             echo "</tr>";
